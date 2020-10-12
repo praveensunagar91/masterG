@@ -1,0 +1,135 @@
+
+
+<div class="backAction">
+  <!-- content starts -->
+  <!--  Header  -->
+
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+     <a routerLink="/" class="logo mr-auto"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="align-items-center">
+        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+        <li class="drop-down">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> <span class="u_name ml-1"> Deepak Ranaut </span></a>
+          <ul>
+             <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  <div class="mobiletop nav-menu d-flex d-lg-none align-items-center w-100 justify-content-end pr-2">
+  <a href="#" class="text-dark mr-3"><i class="fa fa-bell"></i></a>
+  <div class="drop-down position-relative">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> </a>
+          <ul>
+             <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+</header><!-- End Header -->
+<main id="main" style="overflow:hidden;position:relative;">
+	<div class="header-shape">
+		<img src="assets/images/header_shap.png">
+	</div>
+  <div class="sapretor"></div>
+  <section class="dshbord-section pt-3 pb-3">
+    <div class="container">
+  <div class="card mb-3">
+    <div class="p-3">
+      <h4 class="mb-0 text-dark page-title-main">Add Feedback</h4>
+    </div>
+    <hr class="m-0">
+
+    <div class="card-body">
+      <div class="row cmspage-content">
+        <div class=" col-md-12">
+          <form method="post" ction="#" id="myform" role="form" class="loginform formtraveler needs-validation" novalidate="novalidate">
+             <div class="form-row pt-3">
+              <div class="col-md-4 col-sm-6 form-group">
+                <label for="Name">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required="">
+                <div class="invalid-feedback">Please enter your full name</div>
+              </div>
+              <div class="col-md-4 col-sm-6 form-group">
+                <label for="Email">Email Address</label>
+                <input type="text" class="form-control" id="Email" placeholder="Enter your email" name="Email" required="">
+                <div class="invalid-feedback">Please enter your email</div>
+              </div>
+
+              <div class="col-md-4 col-sm-6 form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" class="form-control" id="mobile" placeholder="Enter your mobile" name="mobile" data-rule="minlen:9" required="">
+                <div class="invalid-feedback">Please enter your mobile number</div>
+              </div>
+
+
+              <div class="col-xl-12 form-group">
+                <label for="Complaints">Feedback</label>
+                <textarea type="text" class="form-control" id="msg" name="msg" placeholder="Message here..." required=""></textarea>
+                <div class="invalid-feedback">Please enter your feedback</div>
+              </div>
+
+              <div class="form-group col-xl-4">
+                <label for="exampleFormControlFile1">Add file</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              </div>
+
+             </div>
+
+             <div class="btn-feedback">
+              <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+              <a href="#" class="btn btn-outline-primary">Cancel</a>
+             </div>
+          </form>
+        </div>
+
+        <div class="col-lg-6 col-md-12 pb-3">
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+    </div>
+  </section>
+</main>
+<!-- Footer -->
+<footer id="footer">
+  <div class="container d-md-flex py-4">
+    <div class="footermenu">
+    <a routerLink="/aboutUs">About Us</a>
+    <a routerLink="/contactUs">Contact Us</a>
+    <a routerLink="/faq">FAQs</a>
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/termsConditions">Terms & Conditions</a>
+  </div>
+      <div class="ml-md-auto text-center text-md-left">
+    <div class="copyright">
+      &copy; 2020 MasterG. All Rights Reserved.
+    </div>
+      </div>
+  </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fas fa-angle-up"></i></a>
+
+  <!-- Vendor JS Files
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script> -->
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+</div>

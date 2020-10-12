@@ -1,0 +1,173 @@
+
+
+<div class="backAction">
+  <!-- content starts -->
+  <!--  Header  -->
+
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+     <a routerLink="/" class="logo mr-auto"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="align-items-center">
+        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+        <li class="drop-down">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> <span class="u_name ml-1"> Deepak Ranaut </span></a>
+          <ul>
+             <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  <div class="mobiletop nav-menu d-flex d-lg-none align-items-center w-100 justify-content-end pr-2">
+  <a href="#" class="text-dark mr-3"><i class="fa fa-bell"></i></a>
+  <div class="drop-down position-relative">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> </a>
+          <ul>
+             <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+</header><!-- End Header -->
+
+<main id="main" style="overflow:hidden;position:relative;">
+	<div class="header-shape">
+		<img src="assets/images/header_shap.png">
+	</div>
+  <div class="sapretor"></div>
+  <section class="dshbord-section pt-3 pb-3">
+    <div class="container">
+  <div class="card mb-3">
+    <div class="p-3">
+      <h4 class="mb-0 text-dark page-title-main">Add Forum</h4>
+    </div>
+    <hr class="mt-0">
+    <div class="card-body">
+      <form class="text-left profile-form">
+
+        <div class="row">
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Entity </label>
+          <select class="form-control custom-select">
+           <option value=""> Select Entity</option>
+           <option value="1">Entity</option>
+           <option value="2">Entity </option>
+          </select>
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Category Level 1 </label>
+          <select class="form-control custom-select">
+           <option value=""> Select category level 1</option>
+           <option value="1">category</option>
+           <option value="2">category </option>
+          </select>
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Category Level 2 </label>
+          <select class="form-control custom-select">
+           <option value=""> Select category level 2</option>
+           <option value="1">category</option>
+           <option value="2">category </option>
+          </select>
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Category Level 3 </label>
+          <select class="form-control custom-select">
+           <option value=""> Select category level 3</option>
+           <option value="1">category</option>
+           <option value="2">category </option>
+          </select>
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Category Level 4 </label>
+          <select class="form-control custom-select">
+           <option value=""> Select category level 4</option>
+           <option value="1">category</option>
+           <option value="2">category </option>
+          </select>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Subject </label>
+          <input type="text" id="defaultName" class="form-control" placeholder="Enter subject">
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Forum Name</label>
+          <input type="text" id="defaultName" class="form-control" placeholder="Enter name">
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Faculty</label>
+          <input type="text" id="defaultName" class="form-control" placeholder="Enter faculty name">
+        </div>
+
+
+        <div class="form-group col-lg-12 col-md-12">
+          <label>Description</label>
+          <textarea type="text" rows="4" class="form-control" placeholder="Write here.."> </textarea>
+        </div>
+
+        <div class="col-lg-12 col-md-12">
+          <label>File Uploads</label>
+          <div class="fi-profile-photo pidiction-photo">
+            <label for="photoupload">
+              <span class="imagebox"><img id="blah-b" src="assets/images/upload-photo.jpg" alt=""></span>
+            </label>
+            <label for="photoupload" class="fi-custom-upladfile">
+              <input onChange="document.getElementById('blah-b').src = window.URL.createObjectURL(this.files[0])" multiple="" id="photoupload" name="photoupload" type="file">  <!-- <span class="photoupload-link">Upload Photo</span> -->
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Status</label>
+          <select class="form-control custom-select">
+           <option value="1"> Active</option>
+           <option value="2">Inactive</option>
+          </select>
+        </div>
+        </div>
+        <div class="btns pt-3">
+          <button type="button" class="btn btn-primary">Save</button>&nbsp;
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    </div>
+  </section>
+</main>
+<!-- Footer -->
+<footer id="footer">
+  <div class="container d-md-flex py-4">
+    <div class="footermenu">
+    <a routerLink="/aboutUs">About Us</a>
+    <a routerLink="/contactUs">Contact Us</a>
+    <a routerLink="/faq">FAQs</a>
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/termsConditions">Terms & Conditions</a>
+  </div>
+      <div class="ml-md-auto text-center text-md-left">
+    <div class="copyright">
+      &copy; 2020 MasterG. All Rights Reserved.
+    </div>
+      </div>
+  </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fas fa-angle-up"></i></a>
+
+  <!-- Vendor JS Files
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script> -->
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</div>

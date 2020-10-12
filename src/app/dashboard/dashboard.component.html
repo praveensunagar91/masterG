@@ -1,0 +1,326 @@
+<div class="d-flex justify-content-center loading" *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<div class="backAction" *ngIf="!isLoading">
+<!-- content starts -->
+<!--  Header  -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+     <a routerLink="/" class="logo mr-auto"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="align-items-center">
+        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+        <li class="drop-down">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> <span class="u_name ml-1"> Deepak Ranaut </span></a>
+          <ul>
+             <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  <div class="mobiletop nav-menu d-flex d-lg-none align-items-center w-100 justify-content-end pr-2">
+  <a href="#" class="text-dark mr-3"><i class="fa fa-bell"></i></a>
+  <div class="drop-down position-relative">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> </a>
+          <ul>
+             <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+</header><!-- End Header -->
+
+<main id="main" style="overflow:hidden;position:relative;">
+<div class="header-shape">
+  <img src="assets/images/header_shap.png">
+</div>
+<div class="sapretor"></div>
+  <!--  -->
+  <section class="dshbord-section pt-3 pb-3">
+    <div class="container" data-aos="fade-up">
+      <div class="row content">
+        <div class="col-lg-5">
+          <div class="card mb-3">
+      <div class="card-header headerhospital">
+        <div class="d-flex">
+          <div class="img-ciecle-md"><img src="assets/images/apollo-hospital.png" class="rounded-circle" alt=""></div>
+          <div class="">
+            <h4 class="mb-1 theme-text-color">My Courses </h4>
+          </div>
+          <div class="ml-auto">
+            <a routerLink="/dashboard/courses" class="underline">View All</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bodyhospital">
+        <div class="d-flex pb-4 align-items-center">
+          <div class="img-rounded mr-2"><img src="assets/images/course-img1.png" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">Physics Basics <small class="text-muted"> | 16 Chapters</small></h6>
+            <p class="hospitalsmall-title mb-0"> Coaching> Center 1> XII Class </p>
+          </div>
+          <div class="ml-auto">
+            <a href="#" class="btn btn-primary btn-light-blue">View Course</a>
+          </div>
+        </div>
+
+        <div class="d-flex pb-3 align-items-center">
+          <div class="img-rounded mr-2"><img src="assets/images/course-img2.jpg" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">Physics Basics <small class="text-muted"> | 16 Chapters</small></h6>
+            <p class="hospitalsmall-title mb-0"> Coaching> Center 1> XII Class </p>
+          </div>
+          <div class="ml-auto">
+            <a href="#" class="btn btn-primary btn-light-blue">View Course</a>
+          </div>
+        </div>
+        <!-- <div class="ml-auto">
+          <a href="#" class="btn btn-primary">Add Course</a>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="card mb-3 card-assignment">
+      <div class="card-header headerhospital">
+        <div class="d-flex">
+          <div class="img-ciecle-md"><img src="assets/images/apollo-hospital.png" class="rounded-circle" alt=""></div>
+          <div class="">
+            <h4 class="mb-1 theme-text-color">Assignments </h4>
+          </div>
+          <div class="ml-auto">
+            <a routerLink="/dashboard/assignments" class="underline">View All</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bodyhospital" *ngFor="let item of assignData">
+        <div class="d-flex pb-4 align-items-center assign">
+          <div class="img-rounded mr-2"><img src="assets/images/pdf-icon.png" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">{{item.assignmentName}}</h6>
+            <p class="hospitalsmall-title mb-0"></p>
+          </div>
+          <div class="ml-auto">
+            <p class="mb-0 text-muted">{{item.assignmentCreatedDate|date:'short'}}<br/> <span class="indicate green"></span></p>
+          </div>
+        </div>
+
+        <!-- <div class="d-flex pb-4 align-items-center">
+          <div class="img-rounded mr-2"><img src="assets/images/pdf-icon.png" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">Assignment-Physics-2</h6>
+            <p class="hospitalsmall-title mb-0"> Coaching> Center 1> JEE> Batch 3</p>
+          </div>
+          <div class="ml-auto">
+            <p class="mb-0 text-muted">April 12, 2020  <span class="indicate green"></span></p>
+          </div>
+        </div> -->
+
+        <!-- <div class="d-flex pb-4 align-items-center">
+          <div class="img-rounded mr-2"><img src="assets/images/pdf-icon.png" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">Assignment-Physics-2</h6>
+            <p class="hospitalsmall-title mb-0"> Coaching> Center 1> JEE> Batch 3</p>
+          </div>
+          <div class="ml-auto">
+            <p class="mb-0 text-muted">April 12, 2020  <span class="indicate green"></span></p>
+          </div>
+        </div> -->
+
+      </div>
+      <div class="mr-auto assignment">
+        <a  routerLink="/dashboard/addAssignment" class="btn btn-primary">Add Assignment</a>
+      </div>
+    </div>
+
+    <div class="card mb-3 card-forms">
+      <div class="card-body bodyhospital">
+        <a routerLink="/dashboard/forums" class="d-flex align-items-center">
+          <div class="img-rounded mr-2"><img src="assets/images/forums-img.png" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h4 class="mb-1 text-white">Forums</h4>
+            <p class="hospitalsmall-title mb-0 text-white"> Communicate with students & fellow teachers.</p>
+          </div>
+          <div class="ml-auto">
+            <div class="text-white"><img src="assets/images/right-arrow.png" alt="arrow"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+        </div>
+
+    <div class="col-lg-4">
+    <div class="card mb-3 card-assignment">
+      <div class="card-header headerhospital">
+        <div class="d-flex">
+          <div class="img-ciecle-md"><img src="assets/images/apollo-hospital.png" class="rounded-circle" alt=""></div>
+          <div class="">
+            <h4 class="mb-1 theme-text-color">Exam Marks Predictions </h4>
+          </div>
+          <div class="ml-auto">
+            <a routerLink="/dashboard/examMarksPrediction" class="underline">View All</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bodyhospital">
+        <div class="d-flex pb-4 align-items-center">
+          <div class="img-rounded mr-2"><img src="assets/images/marks-icon.png" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">XII Class-Physics</h6>
+            <p class="hospitalsmall-title mb-0"> Coaching> Center 1> JEE> Batch 3</p>
+          </div>
+          <div class="ml-auto">
+            <p class="mb-0 text-muted txt-sm">April 12, 2020  <span class="indicate green"></span></p>
+          </div>
+        </div>
+
+        <div class="d-flex pb-4 align-items-center">
+          <div class="img-rounded mr-2"><img src="assets/images/marks-icon.png" class="rounded" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">XII Class-Physics</h6>
+            <p class="hospitalsmall-title mb-0"> Coaching> Center 1> JEE> Batch 3</p>
+          </div>
+          <div class="ml-auto">
+            <p class="mb-0 text-muted txt-sm">April 12, 2020  <span class="indicate gray"></span></p>
+          </div>
+        </div>
+        <div class="ml-auto">
+          <a routerLink="/dashboard/addExamMarksPrediction" class="btn btn-primary">Add Exam Marks Prediction</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3 card-assignment">
+      <div class="card-header headerhospital">
+        <div class="">
+          <div class="">
+            <h4 class="mb-1 theme-text-color">Performance Indicator </h4>
+          </div>
+          <div class="d-flex">
+            <div class="pr-3"><span class="indicate orange"></span> Courses </div>
+            <div><span class="indicate blue"></span> Tests </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bodyhospital">
+        <div class="ct-svg-chart" style="height:280px;"></div>
+
+      </div>
+    </div>
+    </div>
+
+        <div class="col-lg-3 pt-4 pt-lg-0" >
+          <div class="card mb-3 card-assignment" *ngFor="let item of arr">
+      <div class="profile-content">
+        <div class="big-profile"><img class="user_img" [src]="item.facultyProfilePicture" alt=""></div>
+        <div class="proinfo">
+          <h5 class="mb-0 mt-3">{{item.facultyFullName}}</h5>
+          <p>{{item.facultyAddress}}</p>
+          <div class="">
+            <!-- <a routerLink="/faculty" class="btn btn-primary">View Profile</a> -->
+            <button type="button" class="btn btn-primary" (click)="onMove(item)">View Profile</button>
+          </div>
+          <br>
+          <hr>
+        </div>
+      </div>
+
+      <div class="card-header headerhospital">
+        <div class="d-flex">
+          <div class="img-ciecle-md"><img src="assets/images/apollo-hospital.png" class="rounded-circle" alt=""></div>
+          <div class="">
+            <h4 class="mb-1 theme-text-color">Feedback</h4>
+          </div>
+          <div class="ml-auto">
+            <a routerLink="/dashboard/feedback" class="underline">View All</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bodyhospital">
+        <div class="d-flex pb-4 ">
+          <div class="img-circle mr-2"><img src="assets/images/user-1.jpg" class="" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">Ruhina Malik</h6>
+            <p class="hospitalsmall-title mb-0">This feedback is for dummy purpose and here, it can be  </p>
+          </div>
+        </div>
+        <div class="d-flex pb-4">
+          <div class="img-circle mr-2"><img src="assets/images/user-2.jpg" class="" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">Pragyan Singh</h6>
+            <p class="hospitalsmall-title mb-0">This feedback is for dummy purpose and here, it can be  </p>
+          </div>
+        </div>
+        <div class="d-flex pb-4">
+          <div class="img-circle mr-2"><img src="assets/images/user-1.jpg" class="" alt=""></div>
+          <div class="hospitaltitle">
+            <h6 class="mb-1">Pragyan Singh</h6>
+            <p class="hospitalsmall-title mb-0">This feedback is for dummy purpose and here, it can be  </p>
+          </div>
+        </div>
+        <!-- <div class="ml-auto">
+          <a href="#" class="btn btn-primary">Add Feedback</a>
+        </div>	 -->
+      </div>
+    </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="container d-md-flex py-4">
+    <div class="footermenu">
+    <a routerLink="/aboutUs">About Us</a>
+    <a routerLink="/contactUs">Contact Us</a>
+    <a routerLink="/faq">FAQs</a>
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/termsConditions">Terms & Conditions</a>
+  </div>
+      <div class="ml-md-auto text-center text-md-left">
+    <div class="copyright">
+      &copy; 2020 MasterG. All Rights Reserved.
+    </div>
+      </div>
+  </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+<!-- <div id="preloader"></div> -->
+<!-- Vendor JS Files -->
+ <!-- <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script> -->
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+ <!-- Cart JS File
+<script src="js/highcharts.js"></script>
+<script src="js/jquery.reusable-highcharts.min.js"></script> -->
+
+ <!-- <script src="js/custom.min.js"></script> -->
+
+<script src="assets/js/chartist.min.js"></script>
+   <script src="assets/js/chartist-plugin-tooltip.min.js"></script>
+ <script src="assets/js/chartist-init.js"></script>
+
+<!-- <script src="js/dashboard1.js"></script> -->
+
+
+
+
+
+
+<!-- content end -->
+</div>

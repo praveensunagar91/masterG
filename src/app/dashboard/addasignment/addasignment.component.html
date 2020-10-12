@@ -1,0 +1,166 @@
+<div class="backAction">
+
+  <!-- content starts -->
+<!--  Header  -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+     <a routerLink="/" class="logo mr-auto"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="align-items-center">
+        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+        <li class="drop-down">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> <span class="u_name ml-1"> Deepak Ranaut </span></a>
+          <ul>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  <div class="mobiletop nav-menu d-flex d-lg-none align-items-center w-100 justify-content-end pr-2">
+  <a href="#" class="text-dark mr-3"><i class="fa fa-bell"></i></a>
+  <div class="drop-down position-relative">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> </a>
+          <ul>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+</header><!-- End Header -->
+
+<main id="main" style="overflow:hidden;position:relative;">
+<div class="header-shape">
+  <img src="assets/images/header_shap.png">
+</div>
+<div class="sapretor"></div>
+
+  <section class="dshbord-section pt-3 pb-3">
+    <div class="container">
+  <div class="card mb-3">
+    <div class="p-3">
+      <h4 class="mb-0 text-dark page-title-main">Add Assignment</h4>
+    </div>
+    <hr class="mt-0">
+    <div class="card-body">
+      <form class="text-left profile-form" [formGroup]="assignment" (ngSubmit)="onAdd(assignment.value)">
+        <label>Select Entity</label>
+        <div class="radiogroup form-group">
+         <div class="custom-control custom-radio custom-control-inline" *ngFor="let item of arr">
+          <input formControlName="entityID" type="radio" class="custom-control-input"  id="customRadio1" [value]="item.entityID"   (change)="click(item.entityID)">
+          <label class="custom-control-label" for="customRadio1">{{item.entityName}}</label>
+          <span class="validation" *ngIf="assignment.get('entityID').hasError('required') && assignment.get('entityID').touched">please select option</span>
+
+        </div>
+        <h1>{{selected}}</h1>
+        </div>
+
+        <div class="row">
+        <div class="form-group col-lg-4 col-md-6"  >
+          <select formControlName="centerId" class="form-control custom-select"  (change)="onCenter()">
+            <option  value=""> Select Center</option>
+           <option  [value]="item.userCenterId" *ngFor="let item of centerArr"  >{{item.centerName}}</option>
+          </select>
+          <span class="validation" *ngIf="assignment.get('centerId').hasError('required') && assignment.get('centerId').touched">please select option</span>
+          <h1>{{selectedCenter}}</h1>
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <select formControlName="courseId" class="form-control custom-select"  (change)="onFaculty()">
+           <option value=""> Select Course</option>
+           <option *ngFor="let item of facultyArr" [value]="item.courseId" >{{item.course.CourseName}}</option>
+       </select>
+       <span class="validation" *ngIf="assignment.get('courseId').hasError('required') && assignment.get('courseId').touched">please select option</span>
+       </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <select formControlName="batchId" class="form-control custom-select"  (change)="onBatch()">
+           <option value=""> Select Batch</option>
+           <option *ngFor="let item of facultyArr" [value]="item.categorylevel3ID" >{{item.categorylevel3.categorylevel3Name}}</option>
+          </select>
+          <span class="validation" *ngIf="assignment.get('batchId').hasError('required') && assignment.get('batchId').touched">please select option</span>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Assignment Name</label>
+          <input formControlName="assignmentName" type="text" id="defaultName" class="form-control" pattern="[a-zA-Z\s]*"  placeholder="Enter name" >
+          <span class="validation" *ngIf="assignment.get('assignmentName').hasError('required') && assignment.get('assignmentName').touched">please enter name</span>
+          <!-- <span class="validation" *ngIf="assignment.get('assignmentName').hasError('pattern') && !assignment.get('assignmentName').pristine">please enter characters</span> -->
+        </div>
+        <div class="form-group col-lg-12 col-md-12">
+          <label>Description</label>
+          <textarea formControlName="assignmentDescription" type="text" rows="4" class="form-control" pattern="[a-zA-Z\s]*"  placeholder="Write here.."> </textarea>
+          <span class="validation" *ngIf="assignment.get('assignmentDescription').hasError('required') && assignment.get('assignmentDescription').touched">please enter description</span>
+          <!-- <span class="validation" *ngIf="assignment.get('assignmentDescription').hasError('pattern') && !assignment.get('assignmentDescription').pristine">please enter characters</span> -->
+         </div>
+
+        <div class=" form-group col-lg-12 col-md-12">
+          <label>File Uploads</label>
+          <div class="fi-profile-photo pidiction-photo">
+            <label for="photoupload">
+              <span class="imagebox"><img id="blah-b" src="assets/images/upload-photo.jpg" alt=""></span>
+            </label>
+            <label for="photoupload" class="fi-custom-upladfile">
+              <input name="image" #uploadImage onchange="document.getElementById('blah-b').src = window.URL.createObjectURL(this.files[0])" required multiple="" id="photoupload"  type="file"  (change)="onUpload($event)">  <!-- <span class="photoupload-link">Upload Photo</span> -->
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-lg-4 col-md-6">
+          <label>Status</label>
+          <select  formControlName="assignmentStatus" class="form-control custom-select"  (change)="onStatus()">
+           <option value="active" > Active</option>
+           <option   value="inactive" >Inactive</option>
+          </select>
+          <span class="validation" *ngIf="assignment.get('assignmentStatus').hasError('required') && assignment.get('assignmentStatus').touched">please select option</span>
+        </div>
+        </div>
+        <div class="form-group btns pt-3">
+          <button type="submit"  class="btn btn-primary">Save</button>&nbsp;
+          <button type="button" class="btn btn-outline-primary cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="container d-md-flex py-4">
+    <div class="footermenu">
+    <a routerLink="/aboutUs">About Us</a>
+    <a routerLink="/contactUs">Contact Us</a>
+    <a routerLink="/faq">FAQs</a>
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/termsConditions">Terms & Conditions</a>
+  </div>
+      <div class="ml-md-auto text-center text-md-left">
+    <div class="copyright">
+      &copy; 2020 MasterG. All Rights Reserved.
+    </div>
+      </div>
+  </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- Vendor JS Files -->
+<!-- <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script> -->
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+
+  <!-- content ends -->
+
+</div>

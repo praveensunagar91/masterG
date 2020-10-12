@@ -1,0 +1,168 @@
+<div class="d-flex justify-content-center loading" *ngIf="isLoading">
+<app-loading></app-loading>
+</div>
+<div class="backAction" *ngIf="!isLoading">
+  <!-- content starts -->
+<!--  Header  -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+     <a routerLink="/" class="logo mr-auto"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="align-items-center">
+        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+        <li class="drop-down">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> <span class="u_name ml-1"> Deepak Ranaut </span></a>
+          <ul>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  <div class="mobiletop nav-menu d-flex d-lg-none align-items-center w-100 justify-content-end pr-2">
+  <a href="#" class="text-dark mr-3"><i class="fa fa-bell"></i></a>
+  <div class="drop-down position-relative">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> </a>
+          <ul>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+</header><!-- End Header -->
+
+<main id="main" style="overflow:hidden;position:relative;">
+<div class="header-shape">
+  <img src="assets/images/header_shap.png">
+</div>
+<div class="sapretor"></div>
+
+
+  <section class="dshbord-section pt-3 pb-3">
+    <div class="container">
+  <div class="card mb-3">
+    <div class="p-3">
+      <h4 class="mb-0 text-dark page-title-main">Assignments</h4>
+    </div>
+    <hr class="m-0">
+    <div class="card-body">
+      <div class="d-md-flex">
+        <div class="searchbox form-group position-relative">
+          <input type="text" id="pincode" class="form-control" name="n1" [(ngModel)]="searchstr" placeholder="Search..">
+          <span class="addons"><i class="fa fa-search"></i></span>
+        </div>
+        <div class="ml-auto">
+          <a [routerLink]="['/dashboard/addAssignment']"   class="btn btn-primary">Add Assignments</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 pb-3" *ngFor="let item of arrTwo | paginate:config | grdFilter: {assignmentName: searchstr}; ">
+          <div class="subject-list d-flex align-items-center">
+            <div>
+              <h5>{{item.assignmentName}}</h5>
+              <h6 class="mb-1 font-weight-normal text-dark">{{item.assignmentSubject}}</h6>
+              <p class="mb-0">{{item.assignmentCreatedDate}}</p>
+            </div>
+            <div class="status ml-auto"><span class="text-success">{{item.assignmentStatus}}</span></div>
+          </div>
+        </div>
+        <!-- <div class="col-lg-4 col-md-6 pb-3">
+          <div class="subject-list d-flex align-items-center">
+            <div>
+              <h5>Assignment 5</h5>
+              <h6 class="mb-1 font-weight-normal text-dark">January 13, 2020</h6>
+              <p class="mb-0">Coaching &gt; Center &gt; JEE Main Batch 3</p>
+            </div>
+            <div class="status ml-auto"><span class="text-muted">Inactive</span></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-3">
+          <div class="subject-list d-flex align-items-center">
+            <div>
+              <h5>Assignment 4</h5>
+              <h6 class="mb-1 font-weight-normal text-dark">December 10, 2019</h6>
+              <p class="mb-0">Coaching &gt; Center &gt; JEE Main Batch 3</p>
+            </div>
+            <div class="status ml-auto"><span class="text-success">Active</span></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-3">
+          <div class="subject-list d-flex align-items-center">
+            <div>
+              <h5>Assignment 3</h5>
+              <h6 class="mb-1 font-weight-normal text-dark">November 03, 2019</h6>
+              <p class="mb-0">Coaching &gt; Center &gt; JEE Main Batch 3</p>
+            </div>
+            <div class="status ml-auto"><span class="text-muted">Inactive</span></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-3">
+          <div class="subject-list d-flex align-items-center">
+            <div>
+              <h5>Assignment 2</h5>
+              <h6 class="mb-1 font-weight-normal text-dark">Octomber 03, 2019</h6>
+              <p class="mb-0">Coaching &gt; Center &gt; JEE Main Batch 3</p>
+            </div>
+            <div class="status ml-auto"><span class="text-success">Active</span></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-3">
+          <div class="subject-list d-flex align-items-center">
+            <div>
+              <h5>Assignment 1</h5>
+              <h6 class="mb-1 font-weight-normal text-dark">February 03, 2020</h6>
+              <p class="mb-0">Coaching &gt; Center &gt; JEE Main Batch 3</p>
+            </div>
+            <div class="status ml-auto"><span class="text-success">Active</span></div>
+          </div>
+        </div> -->
+      </div>
+
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+    </div>
+
+  </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="container d-md-flex py-4">
+    <div class="footermenu">
+    <a routerLink="/aboutUs">About Us</a>
+    <a routerLink="/contactUs">Contact Us</a>
+    <a routerLink="/faq">FAQs</a>
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/termsConditions">Terms & Conditions</a>
+  </div>
+      <div class="ml-md-auto text-center text-md-left">
+    <div class="copyright">
+      &copy; 2020 MasterG. All Rights Reserved.
+    </div>
+      </div>
+  </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- Vendor JS Files -->
+<!-- <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script> -->
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+
+  <!-- content ends -->
+</div>

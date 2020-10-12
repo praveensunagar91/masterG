@@ -1,0 +1,164 @@
+
+<div class="loading">
+   <!--  Header  -->
+ <header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+     <a [routerLink]="['/']"  class="logo mr-auto"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="align-items-center">
+        <li><a routerLink="/aboutUs">About Us</a></li>
+        <li><a routerLink="/contactUs">Contact Us</a></li>
+        <li><a routerLink="/faq">FAQ</a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+    <a href="#" class="get-started-btn">Login</a>
+  </div>
+</header><!-- End Header -->
+
+<main id="main" style="overflow:hidden;position:relative;">
+<div class="header-shape">
+  <img src="assets/images/header_shap.png">
+</div>
+<div class="sapretor"></div>
+  <!--  -->
+  <section class="dshbord-section pt-3 pb-3">
+    <div class="container" data-aos="fade-up">
+      <div class="row content align-items-center">
+        <div class="col-lg-8 col-md-6 d-none d-md-block">
+          <div class="img-login">
+      <img src="assets/images/login-img.png" alt="login image">
+    </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+    <form action="dashboard.html" method="post" role="form" [formGroup]="login"  class="login-form" (ngSubmit)="onLogin(login.value)">
+      <h3 class="text-dark mb-0">Welcome back!</h3>
+      <p class="text-muted">Enter your credentials to login to your account.</p>
+            <div class="form-row">
+      <div class="col-md-12 form-group position-relative with-addons">
+        <span class="addons"><i class="fa fa-user"></i></span>
+                  <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter Email" />
+                  <span class="validation" *ngIf="login.get('email').hasError('required') && login.get('email').touched">Please Enter Email</span>
+                  <span class="validation" *ngIf="login.get('email').hasError('email') && !login.get('email').pristine">Please Enter Prorper Email</span>
+
+              </div>
+              <div class="col-md-12 form-group position-relative with-addons">
+        <a href="#" class="forgotpin" data-toggle="modal" data-target="#ForgotPassword">Forgot?</a>
+        <span class="addons"><i class="fa fa-lock"></i></span>
+                  <input type="password" formControlName="password" class="form-control" id="password"  placeholder="Enter Password" />
+                  <span class="validation" *ngIf="login.get('password').hasError('required') && login.get('password').touched">Please Enter Password</span>
+
+              </div>
+            </div>
+      <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input"  id="customCheck" name="example1">
+      <label class="custom-control-label theme-text" for="customCheck">Remember Me</label>
+      </div>
+
+            <div class="text-center pt-4">
+      <p><button type="submit"  class="get-started-btn btnlogin">Login</button></p>
+      <!-- <span>New User? <a href="#">Sign Up</a></span> -->
+      </div>
+          </form>
+    </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+  <!-- The Modal ForgotPassword -->
+<div class="modal fade" id="ForgotPassword">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header pt-2 pb-0" style="border-bottom:none;">
+     <!--<h4 class="modal-title">Forgot Password</h4>-->
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <!-- Modal body -->
+    <div class="modal-body pt-0">
+      <form class="login-register-form" [formGroup]="forgetform" (ngSubmit)="forget()">
+        <h4 class="modal-title">Forgot your Password</h4>
+         <p class="text-secondary">Enter your registered email adress to reset your password. </p>
+         <div class="form-row pb-2">
+          <div class="form-group col-md-12">
+            <input type="text" formControlName="email" id="EmailAddress" class="form-control" placeholder="Email Address">
+          </div>
+          <div class="col-md-12 col-sm-12 pt-3 pb-3 text-center">
+            <button type="submit" class="get-started-btn btnlogin" data-toggle="modal" data-target="#ResetPassword">Continue</button>
+          </div>
+         </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- The Modal ResetPassword -->
+<div class="modal fade" id="ResetPassword">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header pt-2 " style="border-bottom:none;">
+     <h4 class="modal-title">Reset Password</h4>
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <!-- Modal body -->
+    <div class="modal-body ">
+      <form class="login-register-form" action="#">
+         <div class="form-row pb-2">
+          <div class="form-group col-md-12">
+            <input type="password" id="NewPassword" class="form-control" placeholder="Enter New Password">
+          </div>
+          <div class="form-group col-md-12">
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password">
+          </div>
+          <div class="col-md-12 col-sm-12 pt-3 pb-3 text-center">
+            <a href="#" class="get-started-btn btnlogin">Save</a>
+          </div>
+         </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="position-relative">
+  <div class="container d-md-flex py-4">
+    <div class="footermenu">
+    <!-- <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQs</a> -->
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/termsConditions">Terms & Conditions</a>
+  </div>
+      <div class="ml-md-auto text-center text-md-left">
+    <div class="copyright">
+      &copy; 2020 MasterG. All Rights Reserved.
+    </div>
+      </div>
+  </div>
+<div class="footer-shape">
+  <img src="assets/images/footer_shap.png">
+</div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- Vendor JS Files -->
+<!-- <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script> -->
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+<script>
+$('a[data-target="#ResetPassword"]').click(function(e){
+  $('#ForgotPassword').modal('hide');
+ })
+</script>
+
+</div>

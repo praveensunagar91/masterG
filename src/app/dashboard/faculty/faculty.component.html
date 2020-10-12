@@ -1,0 +1,230 @@
+<div class="backAction">
+
+  <!-- content starts  -->
+
+<!--  Header  -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+     <a routerLink="/" class="logo mr-auto"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="align-items-center">
+        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+        <li class="drop-down">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> <span class="u_name ml-1"> Deepak Ranaut </span></a>
+          <ul>
+            <li><a routerLink="/dashboard" (click)="onDashboard()">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  <div class="mobiletop nav-menu d-flex d-lg-none align-items-center w-100 justify-content-end pr-2">
+  <a href="#" class="text-dark mr-3"><i class="fa fa-bell"></i></a>
+  <div class="drop-down position-relative">
+    <a href=""><span class="user-circle"><img class="user_img" src="assets/images/user.jpg"></span> </a>
+          <ul>
+            <li><a routerLink="/dashboard" (click)="onDashboard()">Dashboard</a></li>
+      <li><a routerLink="/dashboard/faculty/:facultyID">My Profile</a></li>
+            <li><a routerLink="/dashboard/changePassword">Change Password</a></li>
+            <li><a  routerLink="/" (click)="onLogout()">Logout</a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+</header><!-- End Header -->
+
+<main id="main" style="overflow:hidden;position:relative;">
+<div class="header-shape">
+  <img src="assets/images/header_shap.png">
+</div>
+<div class="sapretor"></div>
+
+  <section class="dshbord-section pt-3 pb-3">
+    <div class="container">
+  <div class="card mb-3">
+    <div class="p-3">
+      <h4 class="mb-0 text-dark page-title-main">Faculty Profile</h4>
+    </div>
+    <hr class="mt-0">
+    <div class="card-body">
+      <form class="text-left profile-form" [formGroup]="faculty" (ngSubmit)="onUpdateProfile(faculty.value)">
+        <div class="row">
+        <div class="col-lg-3 col-md-12">
+          <div class="fi-profile-photo">
+            <span class="imagebox"><label for="photoupload"><img id="blah-b" src="assets/images/user-icon.png" alt=""></label></span>
+            <label for="photoupload" class="fi-custom-upladfile">
+              <input name="image" onchange="document.getElementById('blah-b').src = window.URL.createObjectURL(this.files[0])" multiple="" id="photoupload" name="photoupload" type="file" (change)="onUploadPic($event)">  <span class="photoupload-link">Upload Photo</span>
+            </label>
+          </div>
+          <span class="validation" *ngIf="faculty.get('image').hasError('extension') && faculty.get('extension').touched">Please Upload jpeg files</span>
+
+        </div>
+        <div class="col-lg-9 col-md-12 align-self-center">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label>Name</label>
+              <input formControlName="facultyFullName" type="text" id="defaultName" class="form-control" placeholder="Enter name">
+              <span class="validation" *ngIf="faculty.get('facultyFullName').hasError('required') && faculty.get('facultyFullName').touched">Please Enter Name</span>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Mobile Number</label>
+              <input formControlName="facultyMobile" type="text" id="MobileNumber" class="form-control" placeholder="Enter mobile number">
+              <span class="validation" *ngIf="faculty.get('facultyMobile').hasError('required') && faculty.get('facultyMobile').touched">Please Enter Mobile Number</span>
+
+            </div>
+            <div class="form-group col-md-6">
+              <label>Email Address</label>
+              <input formControlName="facultyEmail" type="email" id="EmailAddress" class="form-control" placeholder="Enter email address">
+              <span class="validation" *ngIf="faculty.get('facultyEmail').hasError('required') && faculty.get('facultyEmail').touched">Please Enter Email</span>
+
+            </div>
+            <div class="form-group col-md-6">
+              <label class="active">Gender</label>
+              <select formControlName="facultyGender" class="form-control custom-select" (change)="onSelectGender()">
+               <option value=""> Select Gender</option>
+               <option value="Male">Male</option>
+               <option value="Female">Female </option>
+              </select>
+              <span class="validation" *ngIf="faculty.get('facultyGender').hasError('required') && faculty.get('facultyGender').touched">Please Select Gender</span>
+
+            </div>
+            <div class="form-group col-md-6">
+              <label>Date of Birth</label>
+              <input formControlName="facultyBirthDate" type="date" id="date" class="form-control" placeholder="">
+              <span class="validation" *ngIf="faculty.get('facultyBirthDate').hasError('required') && faculty.get('facultyBirthDate').touched">Please Select Date Of Birth</span>
+
+            </div>
+            <div class="form-group col-md-6">
+              <label>Joining Date</label>
+              <input formControlName="facultyJoiningDate" type="date" id="date" class="form-control" placeholder="">
+              <span class="validation" *ngIf="faculty.get('facultyJoiningDate').hasError('required') && faculty.get('facultyJoiningDate').touched">Please Select Joining Date</span>
+
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <hr class="d-none d-md-block">
+        <div class="row">
+        <div class="col-lg-4 col-md-6 form-group">
+          <label >Country</label>
+          <select formControlName="countryID" class="form-control custom-select" (change)="onSelectCountry()">
+           <option value=""> Select Country</option>
+            <option [value]='item.countryID' *ngFor="let item of CountryArr">{{item.countryName}}</option>
+           </select>
+           <span class="validation" *ngIf="faculty.get('countryID').hasError('required') && faculty.get('countryID').touched">Please Select Country</span>
+
+        </div>
+        <div class="col-lg-4 col-md-6 form-group">
+          <label>State</label>
+          <select formControlName="stateID" class="form-control custom-select" (change)="onSelectState()">
+           <option value=""> Select State</option>
+           <option value="1">Gujrat</option>
+           <option value="2">Maharastra </option>
+           <option value="3">Rajsthan </option>
+          </select>
+          <span class="validation" *ngIf="faculty.get('stateID').hasError('required') && faculty.get('stateID').touched">Please Select State</span>
+
+        </div>
+        <div class="col-lg-4 col-md-6 form-group">
+          <label>City</label>
+          <select formControlName="cityID" class="form-control custom-select" (change)="onSelectCity()">
+           <option value=""> Select City</option>
+           <option value="1">Ahmedabad</option>
+           <option value="2">Surat </option>
+           <option value="3">Rajkot </option>
+          </select>
+          <span class="validation" *ngIf="faculty.get('cityID').hasError('required') && faculty.get('cityID').touched">Please Select City</span>
+
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="form-group">
+            <label>PIN Code</label>
+            <input formControlName="facultyPincode" type="text" id="pincode" class="form-control" placeholder="Enter PIN number">
+            <span class="validation" *ngIf="faculty.get('facultyPincode').hasError('required') && faculty.get('facultyPincode').touched">Please Enter Pincode</span>
+
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+          <div class="form-group">
+            <label>Address</label>
+            <textarea formControlName="facultyAddress" type="text" class="form-control" placeholder="Enter address"> </textarea>
+            <span class="validation" *ngIf="faculty.get('facultyAddress').hasError('required') && faculty.get('facultyAddress').touched">Please Enter Address</span>
+
+          </div>
+        </div>
+        </div>
+
+        <hr class="d-none d-md-block">
+        <label>Faculty Subjects</label>
+        <div class="row">
+        <div class="col-lg-4 col-md-6 form-group" *ngFor="let item of subjectsNewArr">
+          <div class="subject-list">
+            <h6>{{item.coursesubjName}}</h6>
+            <p class="mb-0">{{item.totalTopic}}</p>
+          </div>
+        </div>
+        <!-- <div class="col-lg-4 col-md-6 form-group">
+          <div class="subject-list">
+            <h6>XII Class - English</h6>
+            <p class="mb-0">Academic > XII Class</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 form-group">
+          <div class="subject-list">
+            <h6>English</h6>
+            <p class="mb-0">Coaching > Center > JEE Main Batch 2</p>
+          </div>
+        </div> -->
+        </div>
+
+        <div class="btns">
+          <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="container d-md-flex py-4">
+    <div class="footermenu">
+    <a routerLink="/aboutUs">About Us</a>
+    <a routerLink="/contactUs">Contact Us</a>
+    <a routerLink="/faq">FAQs</a>
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/termsConditions">Terms & Conditions</a>
+  </div>
+      <div class="ml-md-auto text-center text-md-left">
+    <div class="copyright">
+      &copy; 2020 MasterG. All Rights Reserved.
+    </div>
+      </div>
+  </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- Vendor JS Files -->
+<!-- <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script> -->
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+
+
+  <!-- content ends -->
+
+</div>
